@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeuPrompt</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../icons/icon48.png" alt="MeuPrompt Logo">
+                <h1>MeuPrompt</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active" data-view="prompts"><img src="../icons/folder.png" alt="Folder Icon"> Meus Prompts</li>
+                    <li data-view="marketplace"><img src="../icons/marketplace.png" alt="Marketplace Icon"> Marketplace</li>
+                    <li data-view="settings"><img src="../icons/settings.png" alt="Settings Icon"> Configurações</li>
+                </ul>
+            </nav>
+            <button id="newFolderBtn" class="new-folder-button">+ Nova Pasta</button>
+        </aside>
+        <main class="main-content">
+            <header>
+                <input type="search" id="searchInput" placeholder="Buscar prompt...">
+                <button id="newPromptBtn" class="new-prompt-button">+ Novo Prompt</button>
+            </header>
+            <section id="promptsView" class="view active-view">
+                <!-- Conteúdo dos prompts será carregado aqui -->
+                <div class="prompt-list-container">
+                  <p>Nenhum prompt encontrado. Clique em "+ Novo Prompt" para adicionar.</p>
+                </div>
+            </section>
+            <section id="marketplaceView" class="view">
+                <h2>Marketplace de Prompts</h2>
+                <!-- Conteúdo do Marketplace será carregado aqui -->
+                 <div class="marketplace-grid">
+                    </div>
+            </section>
+            <section id="settingsView" class="view">
+                <h2>Configurações</h2>
+                <!-- Conteúdo das configurações será carregado aqui -->
+                <p>Opções de configuração da extensão.</p>
+            </section>
+
+            <!-- Modal para Novo Prompt/Editar Prompt -->
+            <div id="promptModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2 id="modalTitle">Novo Prompt</h2>
+                    <label for="promptTitle">Título:</label>
+                    <input type="text" id="promptTitle" name="promptTitle">
+                    <label for="promptContent">Prompt:</label>
+                    <textarea id="promptContent" name="promptContent" rows="6"></textarea>
+                    <label for="promptFolder">Pasta (opcional):</label>
+                    <select id="promptFolderSelect">
+                        <option value="">Nenhuma</option>
+                        <!-- Opções de pasta serão carregadas aqui -->
+                    </select>
+                    <button id="savePromptBtn">Salvar</button>
+                </div>
+            </div>
+
+            <!-- Modal para Nova Pasta -->
+            <div id="folderModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-folder-button">&times;</span>
+                    <h2>Nova Pasta</h2>
+                    <label for="folderName">Nome da Pasta:</label>
+                    <input type="text" id="folderName" name="folderName">
+                    <button id="saveFolderBtn">Salvar Pasta</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/popup.js"></script>
+</body>
+</html>

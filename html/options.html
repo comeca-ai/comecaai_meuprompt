@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - MeuPrompt</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* Estilos específicos para a página de opções, se necessário */
+        body {
+            width: auto; /* Reset para não usar a largura fixa da popup */
+            height: auto; /* Reset para não usar a altura fixa da popup */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #F0F2F5;
+        }
+        .options-container {
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        .options-container h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        .form-group input[type="checkbox"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #DDD;
+            border-radius: 5px;
+            box-sizing: border-box; /* Para incluir padding e borda na largura total */
+        }
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .form-group button {
+            padding: 12px 25px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 20px auto 0; /* Centraliza o botão */
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="options-container">
+        <h1>Configurações do MeuPrompt</h1>
+
+        <div class="form-group">
+            <label for="themeSelect">Tema da Interface:</label>
+            <select id="themeSelect" name="themeSelect">
+                <option value="light">Claro (Padrão)</option>
+                <option value="dark" disabled>Escuro (Em breve)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="notificationsCheckbox">Ativar Notificações:</label>
+            <input type="checkbox" id="notificationsCheckbox" name="notificationsCheckbox" checked>
+            <small>Receber notificações sobre novos prompts no Marketplace.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="backupFrequency">Frequência de Backup Automático:</label>
+            <select id="backupFrequency" name="backupFrequency">
+                <option value="daily">Diariamente</option>
+                <option value="weekly">Semanalmente</option>
+                <option value="monthly">Mensalmente</option>
+                <option value="never">Nunca</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="importExport">Importar/Exportar Dados:</label>
+            <button id="importDataBtn">Importar Dados (.json)</button>
+            <input type="file" id="importFile" accept=".json" style="display: none;">
+            <button id="exportDataBtn" style="margin-top: 10px;">Exportar Dados (.json)</button>
+        </div>
+
+        <div class="form-group">
+            <button id="saveOptionsBtn">Salvar Configurações</button>
+        </div>
+        <p id="statusMessage" style="text-align: center; margin-top:15px; color: green;"></p>
+    </div>
+
+    <script src="../js/options.js"></script>
+</body>
+</html>

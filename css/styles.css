@@ -1,0 +1,372 @@
+/* Reset básico e estilos globais */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif; /* Usando Roboto como placeholder, idealmente importar a fonte correta */
+    background-color: #F0F2F5; /* Cor de fundo principal da Tela Principal */
+    color: #333;
+    height: 550px; /* Altura fixa para a popup */
+    width: 800px; /* Largura fixa para a popup */
+    overflow: hidden; /* Evitar scrollbars desnecessários na popup */
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+/* Barra Lateral */
+.sidebar {
+    width: 250px; /* Largura da barra lateral da Tela Principal */
+    background-color: #FFFFFF; /* Cor de fundo da barra lateral */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.sidebar .logo img {
+    width: 40px; /* Tamanho do logo */
+    height: 40px;
+    margin-right: 10px;
+}
+
+.sidebar .logo h1 {
+    font-size: 20px; /* Tamanho do título "MeuPrompt" */
+    color: #000000; /* Cor do título */
+    font-weight: bold;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar nav li {
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px; /* Bordas arredondadas dos itens de menu */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 14px; /* Tamanho da fonte dos itens de menu */
+    color: #333; /* Cor do texto dos itens de menu */
+}
+
+.sidebar nav li img {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+}
+
+.sidebar nav li.active {
+    background-color: #4A90E2; /* Cor de fundo do item ativo (azul) */
+    color: #FFFFFF; /* Cor do texto do item ativo (branco) */
+}
+
+.sidebar nav li:not(.active):hover {
+    background-color: #E0E0E0; /* Cor de fundo suave no hover */
+}
+
+.new-folder-button {
+    margin-top: auto; /* Empurra o botão para o final da sidebar */
+    padding: 10px 15px;
+    background-color: #007BFF; /* Cor do botão "Nova Pasta" (azul) */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+}
+
+.new-folder-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Conteúdo Principal */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #F0F2F5; /* Cor de fundo da área de conteúdo */
+    overflow-y: auto; /* Adiciona scroll se o conteúdo exceder a altura */
+}
+
+.main-content header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.main-content header input[type="search"] {
+    padding: 10px;
+    border: 1px solid #CCC;
+    border-radius: 20px; /* Bordas arredondadas do campo de busca */
+    width: 300px; /* Largura do campo de busca */
+    font-size: 14px;
+    background-color: #FFFFFF; /* Fundo branco para o input */
+}
+
+.new-prompt-button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Cor do botão "+ Novo Prompt" (verde) */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.new-prompt-button:hover {
+    background-color: #388E3C;
+}
+
+/* Views (seções de conteúdo) */
+.view {
+    display: none; /* Esconde todas as views por padrão */
+}
+
+.view.active-view {
+    display: block; /* Mostra a view ativa */
+}
+
+/* Estilos para a lista de prompts */
+.prompt-list-container {
+    background-color: #FFFFFF;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.prompt-item {
+    border: 1px solid #E0E0E0; /* Cor da borda dos cards de prompt */
+    background-color: #FFFFFF; /* Cor de fundo dos cards de prompt */
+    border-radius: 8px; /* Bordas arredondadas dos cards */
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Sombra suave para os cards */
+}
+
+.prompt-item h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 16px; /* Tamanho do título do prompt */
+    color: #333;
+}
+
+.prompt-item p {
+    font-size: 13px; /* Tamanho do texto do prompt */
+    color: #555; /* Cor do texto do prompt */
+    white-space: pre-wrap; /* Mantém a formatação do prompt */
+    word-break: break-word;
+    margin-bottom: 10px;
+    max-height: 60px; /* Limita a altura do preview do prompt */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.prompt-item-full p {
+    max-height: none;
+}
+
+
+.prompt-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 4px;
+}
+.prompt-actions button:hover {
+    background-color: #f0f0f0;
+}
+
+.prompt-actions button img {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5); /* Fundo escurecido */
+}
+
+.modal-content {
+    background-color: #FFFFFF; /* Cor de fundo do modal (branco) */
+    margin: 10% auto; /* Centraliza o modal */
+    padding: 25px;
+    border-radius: 8px; /* Bordas arredondadas do modal */
+    width: 80%;
+    max-width: 500px; /* Largura máxima do modal */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.close-button, .close-folder-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.close-button:hover, .close-button:focus,
+.close-folder-button:hover, .close-folder-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 18px; /* Tamanho do título do modal */
+    color: #333;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #555;
+}
+
+.modal-content input[type="text"],
+.modal-content textarea,
+.modal-content select {
+    width: calc(100% - 22px); /* Ajusta para padding e borda */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #DDD; /* Cor da borda dos campos */
+    border-radius: 5px; /* Bordas arredondadas dos campos */
+    font-size: 14px;
+    background-color: #F9F9F9; /* Cor de fundo dos campos */
+}
+
+.modal-content textarea {
+    resize: vertical; /* Permite redimensionamento vertical */
+    min-height: 100px;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    background-color: #007BFF; /* Cor do botão Salvar (azul) */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    float: right; /* Alinha o botão à direita */
+}
+
+.modal-content button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para o Marketplace */
+#marketplaceView h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.marketplace-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Grid responsivo */
+    gap: 20px;
+}
+
+.marketplace-item {
+    background-color: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.marketplace-item h3 {
+    font-size: 16px;
+    color: #007BFF; /* Cor do título do prompt no marketplace */
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.marketplace-item p {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 10px;
+    max-height: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.marketplace-item .tags {
+    margin-bottom: 10px;
+}
+
+.marketplace-item .tag {
+    display: inline-block;
+    background-color: #E0E7FF; /* Cor de fundo das tags */
+    color: #4A90E2; /* Cor do texto das tags */
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.marketplace-item button {
+    padding: 8px 12px;
+    background-color: #28A745; /* Cor do botão "Adicionar aos Meus Prompts" (verde) */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    width: 100%;
+}
+
+.marketplace-item button:hover {
+    background-color: #1E7E34;
+}
+
+
+/* Estilos para Configurações */
+#settingsView h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+#settingsView p {
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+}
+
+/* Utilitários */
+.hidden {
+    display: none !important;
+}
+```
